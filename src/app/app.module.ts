@@ -15,16 +15,19 @@ import { SharedModule } from './shared/shared.module';
 import { PostsModule } from './posts/posts.module';
 import { PostService} from './posts/post.service'
 import { fromEventPattern } from 'rxjs';
+import { signInFormComponent } from './login-form/login-form.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/blog' , pathMatch: 'full'},
-  {path: '', loadChildren: './posts/posts.module#PostsModule'}
+  {path: '', loadChildren: './posts/posts.module#PostsModule'},
+
 ]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    signInFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,17 @@
 import { StringFormat } from "@angular/fire/storage/interfaces";
 
+
+// This is a model
+
 export class Post {
-    id?: string
-    author: string
-    authorId: string
-    content: string
-    image: string
-    published: Date
-    title: string
-  
+    constructor(
+    public author: string,
+    public authorId: string,
+    public content: string,
+    public image: string,
+    public published: Date,
+    public title: string,
+    ) {
+
+    }
 }

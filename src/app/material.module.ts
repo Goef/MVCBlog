@@ -3,15 +3,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 
 
 
 @NgModule({
   imports: [
-    MatButtonModule, MatToolbarModule, MatExpansionModule,MatProgressBarModule
+    MatButtonModule, MatToolbarModule, MatExpansionModule,MatProgressBarModule,MatCardModule,MatIconModule
   ],
-  exports: [MatButtonModule, MatToolbarModule, MatExpansionModule,MatProgressBarModule],
+  exports: [MatButtonModule, MatToolbarModule, MatExpansionModule,MatProgressBarModule,MatCardModule,MatIconModule],
   declarations: []
 })
 export class MaterialModule { }

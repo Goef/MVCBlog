@@ -7,10 +7,16 @@ import { AuthService } from '../../core/auth.service'
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  loginForm: boolean = false;
 
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
 
+
+  login(email:string , password:string) {
+    this.auth.emailLogin(email, password);
+    this.loginForm= false;
+  }
 }

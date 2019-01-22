@@ -5,3 +5,7 @@ span:focus{
     outline:none;
     border:none;
 }
+
+input{
+    width:40%
+}

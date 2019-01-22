@@ -3,6 +3,9 @@ import { AuthService } from 'src/app/core/auth.service';
 import { PostService } from '../post.service';
 import { AngularFireStorage } from '@angular/fire/storage'
 import { Observable } from 'rxjs';
+import { Post } from '../post';
+import { finalize } from 'rxjs/operators';
+
 
 
 
@@ -25,22 +28,22 @@ export class PostDashboardComponent implements OnInit {
   }
 
     createPost() {
-      const data = {
-        author: this.auth.authState.displayName || this.auth.authState.email,
-        authorId: this.auth.currentUserId,
-        content: this.content,
-        image: this.image || null,
-        published: new Date(),
-        title: this.title
+      const post = new Post(
+        this.auth.authState.displayName || this.auth.authState.email,
+        this.auth.currentUserId,
+        this.content,
+        this.image || null,
+        new Date(),
+        this.title
   
-      };
-      
-      this.postService.create(data)
+      );
+      this.postService.create(post)
       this.title = ''
       this.content=''
       this.buttonText= 'Post Created!'
       setTimeout(() => this.buttonText = "Create Post" , 2000)
     }
+
 
 
 
@@ -55,12 +58,20 @@ export class PostDashboardComponent implements OnInit {
         const ref = this.storage.ref(path);
 
 
-        this.uploadPercent = task.percentageChanges();
-
+          this.uploadPercent = task.percentageChanges();
+          
         console.log('Image uploaded!')
-        console.log("hoi")
-        this.downloadURL = ref.getDownloadURL()
-      this.downloadURL.subscribe(url => this.image = url)
+        task.snapshotChanges().pipe(
+          finalize(() => {
+            this.downloadURL = ref.getDownloadURL()
+            this.downloadURL.subscribe(url => (this.image = url));
+          })
+        )
+        .subscribe();
+      
+
+        
+        
     
 
       }
@@ -70,6 +81,6 @@ export class PostDashboardComponent implements OnInit {
 
 
     }
-
+  }
    
-}
+

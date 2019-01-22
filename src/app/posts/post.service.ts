@@ -41,7 +41,8 @@ export class PostService {
   create(data:Post){
     console.log("anus")
     console.log(data)
-    this.postsCollection.add(data)
+    var post = JSON.parse(JSON.stringify(data));
+    this.postsCollection.add(post)
 
 
   }

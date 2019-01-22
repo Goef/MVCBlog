@@ -1,0 +1,16 @@
+
+
+<mat-form-field>
+
+    <input matInput placeholder="email" [(ngModel)]=email name="email">
+
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+
+    <input matInput placeholder="password" [(ngModel)]=password >
+
+  </mat-form-field>
+  <br>
+  <button mat-raised-botton color="accent" (click)="signup(email,password)" [disabled]="!email || !password " >Sign up</button>
+

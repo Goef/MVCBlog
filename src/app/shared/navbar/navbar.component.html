@@ -10,7 +10,17 @@
 </div>
 
 <ng-template #showLogin>
-  <button mat-button (click)="auth.login()">Login with Google</button>
+  <button mat-button (click)="auth.loginGoogle()">Login with Google</button>
+  <button mat-button (click)="loginForm = true">Login with Email</button>
+  <div [hidden]="!loginForm">
+          <input matInput placeholder="email" [(ngModel)]=email name="email">
+
+          <input matInput placeholder="password" [(ngModel)]=password >
+          <button mat-button (click)="login(email,password)">login</button>
+
+
+  </div>
+  <button mat-button routerLink = "signup">Sign Up</button>
 </ng-template>
 </mat-toolbar-row>
 </mat-toolbar>
