@@ -24,7 +24,7 @@ export class AuthService {
   }
 
 
-  login() {
+  loginGoogle() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   }
 
@@ -42,14 +42,5 @@ export class AuthService {
   emailLogin(email: string, password: string) {
     return this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(credential => {
-        return this.updateUserData(credential.user);
-      })
-      .catch(error => this.handleError(error));
   }
-}
-
-export class EmailPasswordCredentials {
-  email: string;
-  password: string;
 }

@@ -14,7 +14,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  loginFormSwitch(){
+    if(this.loginForm == false){
+      this.loginForm= true
+    } else{
+      this.loginForm= false
+    }
+  }
   login(email:string , password:string) {
     this.auth.emailLogin(email, password);
     this.loginForm= false;

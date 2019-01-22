@@ -5,20 +5,20 @@
 <div *ngIf="auth.afAuth.authState | async as user; else showLogin">
 
   <button mat-raised-botton color="accent" routerLink = "/dashboard">Write a post</button>
-<span>Hello {{user.displayName}}</span>
+<span>Hello {{user.displayName || user.email}}</span>
 <button mat-button (click)="auth.logout()">Logout</button>
 </div>
 
 <ng-template #showLogin>
   <button mat-button (click)="auth.loginGoogle()">Login with Google</button>
-  <button mat-button (click)="loginForm = true">Login with Email</button>
+  <button mat-button (click)="loginFormSwitch()">Login with Email</button>
   <div [hidden]="!loginForm">
           <input matInput placeholder="email" [(ngModel)]=email name="email">
-
-          <input matInput placeholder="password" [(ngModel)]=password >
+     
+          <input type="password" matInput placeholder="password" [(ngModel)]=password >
+      
           <button mat-button (click)="login(email,password)">login</button>
-
-
+        
   </div>
   <button mat-button routerLink = "signup">Sign Up</button>
 </ng-template>

@@ -6,6 +6,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { AngularFireStorageModule} from '@angular/fire/storage'
 import { AngularFireAuthModule} from '@angular/fire/auth'
 import { RouterModule, Routes } from '@angular/router'
+import {FormControl, Validators} from '@angular/forms';
 
 import { environment } from '../environments/environment'
  
@@ -39,7 +40,8 @@ const routes: Routes = [
     AngularFireAuthModule,
     CoreModule,
     SharedModule,
-    PostsModule
+    PostsModule,
+    
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

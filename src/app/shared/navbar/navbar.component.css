@@ -9,3 +9,7 @@ span:focus{
 input{
     width:40%
 }
+mat-form-field{
+    display: flex;
+    flex-direction: row;
+}
