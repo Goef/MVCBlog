@@ -1,0 +1,40 @@
+<div *ngIf="this.auth.currentUserId === this.admin">
+  <h1>Hi Admin sir, how can I help you today</h1>
+  <mat-card *ngFor="let post of posts | async">
+    <mat-card-content routerLink="{{post.id}}">
+      <h2>{{post.title}}</h2>
+      <p>{{post.content}}</p>
+      <p>posted by {{post.author}} &bull; {{post.published | date: 'fullDate' }}</p>
+      <div *ngIf="post.active == true">
+        <p>Post is active</p>
+      </div>
+      <div *ngIf="post.active == false">
+        <p>Post is not active</p>
+      </div>
+      <div *ngIf="post.active == true">
+        <mat-button-toggle-group>
+          <mat-button-toggle id="active" (change)="active(post.id,true)">active</mat-button-toggle>
+          <mat-button-toggle (change)="active(post.id,false)">deactivate</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div *ngIf="post.active == false">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (change)="active(post.id,true)">active</mat-button-toggle>
+          <mat-button-toggle id="active" (change)="active(post.id,false)">deactivate</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </mat-card-content>
+    <mat-card-actions  *ngIf="auth.currentUserId === post.authorId || auth.currentUserId === this.admin">
+      <button mat-icon-button (click)="delete(post.id)"></button>
+      <mat-icon>delete</mat-icon>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+</div>
+
+<div *ngIf="this.auth.currentUserId != this.admin">
+
+  <h1>Hi there!</h1>
+  <p>This page is a admin only zone ;)</p>
+
+</div>

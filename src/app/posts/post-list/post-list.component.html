@@ -1,16 +1,21 @@
-
+<section class="adminPanel" *ngIf="auth.currentUserId === this.admin">
+  <button routerLink="../adminpanel">Admin Panel</button>
+</section>
 <section>
-  <mat-card *ngFor="let post of posts | async">
-    <mat-card-content routerLink = "{{post.id}}">
-      <img src="{{post.image}}" alt="{{post.title}}">
-      <h2>{{post.title}}</h2>
-      <p> Posted by {{post.author}}</p>
-      <p>posted by {{post.author}} &bull; {{post.published | date: 'fullDate' }}</p>
-
-    </mat-card-content>
-    <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">
-      <button mat-icon-button (click)="delete(post.id)"></button>
-      <mat-icon>delete</mat-icon>
-    </mat-card-actions>
-  </mat-card>
+  <div *ngFor="let post of posts | async">
+    <div *ngIf="post.active == true">
+      <mat-card>
+        <mat-card-content routerLink="{{post.id}}">
+          <img src="{{post.image}}" alt="{{post.title}}">
+          <h2>{{post.title}}</h2>
+          <p>posted by {{post.author}} &bull; {{post.published | date: 'fullDate' }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId || auth.currentUserId === this.admin">
+          <button mat-icon-button (click)="delete(post.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
 </section>

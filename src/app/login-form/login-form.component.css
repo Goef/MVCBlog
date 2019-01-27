@@ -1,0 +1,15 @@
+.register{
+    text-align: center;
+    margin-top: 10%
+}
+
+button{
+    background-color: blue;
+ border: none;
+ padding:20px;
+
+   cursor: pointer;
+}
+mat-form-field{
+    width: 25%;
+}

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
-import {signInFormComponent} from'../login-form/login-form.component'
+import {LoginFormComponent} from'../login-form/login-form.component'
 import { PostDashboardComponent } from './post-dashboard/post-dashboard.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'blog', component: PostListComponent},
   {path: 'blog/:id', component: PostDetailComponent},
   {path: 'dashboard', component: PostDashboardComponent},
-  {path: 'signup', component: signInFormComponent}
+  {path: 'signup', component: LoginFormComponent}
 ]
 
 @NgModule({

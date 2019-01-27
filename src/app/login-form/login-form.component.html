@@ -1,31 +1,17 @@
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="Email" [formControl]="emailFormControl">
-    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
 
+<div class="register">
 <mat-form-field>
-
-    <input matInput placeholder="email" [(ngModel)]=email name="email">
-
+    <input matInput placeholder="email" [(ngModel)]="email" email="true" >
   </mat-form-field>
   <br>
   <mat-form-field>
-
-    <input matInput type="password" placeholder="password" [(ngModel)]=password required minlength="6">
-
+    <input matInput type="password" placeholder="password" [(ngModel)]="password" required minlength="6">
   </mat-form-field>
   <br>
   <button mat-raised-botton color="accent" (click)="signup(email,password)" [disabled]="!email || !password " >Sign up</button>
-
-  <div [hidden]=!signedUp>
-<h1>Your account has bean created!</h1>
-
-  </div>
-
+</div>
+  <ng-template #loggedIn>
+    <h1>Hi, welcome to the Vinyl blog :)</h1>
+  </ng-template>
 
   

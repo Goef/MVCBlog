@@ -11,6 +11,8 @@ export class Post {
     public image: string,
     public published: Date,
     public title: string,
+    public active: boolean,
+    public loves: number,
     ) {
 
     }

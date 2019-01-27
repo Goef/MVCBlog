@@ -10,11 +10,13 @@ export class PostService {
   postDoc: AngularFirestoreDocument<Post>
 
   constructor(private afs: AngularFirestore) {
-
-
     this.postsCollection = this.afs.collection('posts', ref =>
       ref.orderBy('published', 'desc'))
+  }
 
+  getPostsById(id:string) {
+    this.postDoc = this.afs.doc<Post>(`posts/${id}`)
+    return this.postDoc.valueChanges()
   }
 
   getPosts() {
@@ -27,31 +29,22 @@ export class PostService {
     })
   }
 
-
   getPostData(id: string) {
     this.postDoc = this.afs.doc<Post>(`posts/${id}`)
     return this.postDoc.valueChanges()
   }
-
 
   getPost(id:string){
     return this.afs.doc<Post>(`posts/${id}`)
   }
 
   create(data:Post){
-    console.log("anus")
     console.log(data)
     var post = JSON.parse(JSON.stringify(data));
     this.postsCollection.add(post)
-
-
   }
-
-
-
   delete(id :string){
     return this.getPost(id).delete()
-
   }
 
   update(id:string , formData){

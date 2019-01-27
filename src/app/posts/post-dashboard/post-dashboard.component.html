@@ -6,7 +6,6 @@
           Create a Post
         </mat-panel-title>
       </mat-expansion-panel-header>
-
       <div>
         <input type="file" name="file" id="file" (change)="uploadImage($event)">
         <div [hidden]="!uploadPercent">
@@ -16,25 +15,15 @@
           <img [src]="image || '//:0'">
         </div>
       </div>
-
       <mat-form-field>
-
         <input matInput placeholder="Post Title" [(ngModel)]=title name="title">
-
       </mat-form-field>
       <br>
       <mat-form-field>
-
         <textarea matInput placeholder="Post content" [(ngModel)]=content rows="9"></textarea>
-
       </mat-form-field>
       <br>
-      <button mat-raised-botton color="accent" (click)="createPost(event)" [disabled]="!title || !content || !image">{{buttonText}}</button>
-
-
-
+      <button mat-raised-botton color="accent" (click)="createPost()" [disabled]="!title || !content || !image">{{buttonText}}</button>
     </mat-expansion-panel>
   </mat-accordion>
-
-
 </section>
